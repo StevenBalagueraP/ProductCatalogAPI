@@ -59,24 +59,42 @@ This project is ideal for e-commerce platforms, inventory systems or ani applica
 
 ## Installation and Setup Instructions
 
-1. Clone the repository
+1. Install PostgreSQL on your device
+2. Install dbeaver or any tool that allows to interact with your database
+3. Create a new Database with the following name: **ProductCatalog**
+4. Clone the repository
 
     - you can clone the repository with **GitHub Desktop**
     - Open a terminal and write the following command: `Git clone https://github.com/StevenBalagueraP/ProductCatalogAPI.git`
 
-2. Install all the project dependencies
+5. Install all the project dependencies
 
     - Open the project with an IDE 
     - then Open a terminal
     - write the following command on the terminal `npm install`
-
-3. Run the project
+6. Run the project
 
     - Open the terminal and write: `npm run dev`
 
-4. Open the Swagger link
+7. Open the Swagger link
 
     - Open the following link in your browser: http://localhost:3000
+
+## How to make a Migration?
+
+1. Create a new model with all the fields about the table on
+
+    - `src/infrastructure/database/prisma/schema.prisma`
+2. Open the IDE terminal
+3. Run the migration with the following command:
+    
+    - `npx prisma migrate dev --name create-category --schema=src/infrastructure/database/prisma/schema.prisma`
+4. Check if everything is Ok
+
+    - `npx prisma migrate status --schema=src/infrastructure/database/prisma/schema.prisma`
+5. Check the local database if the table was created sucessfully
+
+
 
 ## Available EndPoints
 
