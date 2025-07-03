@@ -66,17 +66,20 @@ This project is ideal for e-commerce platforms, inventory systems or ani applica
 
     - you can clone the repository with **GitHub Desktop**
     - Open a terminal and write the following command: `Git clone https://github.com/StevenBalagueraP/ProductCatalogAPI.git`
-
-5. Install all the project dependencies
+5. Create .env file on the root folder
+    
+    - when you make the connection with the postgreSQL database you have to make a connection between database and prismaORM
+    - Put the following command on your .env file `DATABASE_URL="postgresql://yourUser:yourDBPassword@localhost:DBport/ProductCatalog"`
+6. Install all the project dependencies
 
     - Open the project with an IDE 
     - then Open a terminal
     - write the following command on the terminal `npm install`
-6. Run the project
+7. Run the project
 
     - Open the terminal and write: `npm run dev`
 
-7. Open the Swagger link
+8. Open the Swagger link
 
     - Open the following link in your browser: http://localhost:3000
 
