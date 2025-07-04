@@ -7,10 +7,77 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Role {
+  idRole         Int         @id @default(autoincrement())
+  name           String      @unique
+  description    String?
+  users          User[]
+}
+
+model User {
+  idUser         Int         @id @default(autoincrement())
+  name           String
+  email          String      @unique
+  password       String
+  createdAt      DateTime    @default(now())
+  idRole         Int
+  reviews        Review[]
+  role           Role        @relation(fields: [idRole], references: [idRole])
+}
+
+model Country {
+  idCountry      Int         @id @default(autoincrement())
+  name           String
+  brands         Brand[]
+}
+
 model Category {
-  idCategory  Int       @id @default(autoincrement())
-  name        String
-  description String?
-  createdAt   DateTime  @default(now())
-  // products    Product[] // relación 1:n (se define cuando crees el modelo Product)
+  idCategory     Int         @id @default(autoincrement())
+  name           String      @unique
+  description    String?
+  createdAt      DateTime    @default(now())
+  products       Product[] 
+}
+
+model Brand {
+  idBrand        Int         @id @default(autoincrement())
+  name           String
+  description    String?
+  idCountry      Int
+  products       Product[]
+  country        Country     @relation(fields: [idCountry], references: [idCountry])
+}
+
+model Product {
+  idProduct      Int         @id @default(autoincrement())
+  name           String
+  description    String?
+  price          Decimal 
+  stock          Int
+  createdAt      DateTime    @default(now())  
+  idCategory     Int
+  idBrand        Int
+  reviews        Review[]
+  images         Image[]
+  category       Category    @relation(fields: [idCategory], references: [idCategory])
+  brand          Brand       @relation(fields: [idBrand], references: [idBrand])
+}
+
+model Review {
+  idReview       Int        @id @default(autoincrement())
+  rating         Decimal
+  comment        String
+  createdAt      DateTime   @default(now())
+  idUser         Int
+  idProduct      Int
+  user           User       @relation(fields: [idUser], references: [idUser])
+  product        Product    @relation(fields: [idProduct], references: [idProduct])
+}
+
+model Image {
+  idImage        Int        @id @default(autoincrement())
+  url            String
+  altText        String
+  idProduct      Int
+  product        Product    @relation(fields: [idProduct], references: [idProduct])
 }
