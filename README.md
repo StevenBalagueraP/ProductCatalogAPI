@@ -19,17 +19,14 @@ This project is ideal for e-commerce platforms, inventory systems or ani applica
 ```
 ├── config/                           
 │   └── index.ts                     
-
 ├── src/                             
 │   ├── application/                 
 │   │   ├── DTOs/                     
 │   │   ├── use-cases/              
 │   │   └── utils/                   
-
 │   ├── domain/                      
 │   │   ├── entities/                
 │   │   └── repositories/            
-
 │   ├── infrastructure/             
 │   │   ├── database/
 │   │   │   ├── prisma/             
@@ -51,9 +48,10 @@ This project is ideal for e-commerce platforms, inventory systems or ani applica
 │   └── integration/
 ├── .env                         
 ├── .gitignore
+├── LICENCE
 ├── package.json
-├── tsconfig.json
-├── nodemon.json                     
+├── package-lock.json  
+├── tsconfig.json                   
 ├── README.md
 ```
 
@@ -97,7 +95,12 @@ This project is ideal for e-commerce platforms, inventory systems or ani applica
     - `npx prisma migrate status --schema=src/infrastructure/database/prisma/schema.prisma`
 5. Check the local database if the table was created sucessfully
 
+## How to Create and Run a Seed?
 
+1. Go to `src/infrastructure/database/seeders/`
+2. Create a new file with kebab-case convention. if you wanna know about that convention you can browse in: https://www.theserverside.com/definition/Kebab-case
+3. Populate the seed with information and add the file into `src/infrastructure/database/seeders/main-seeder.ts`
+4. Run all the seeders with the following command: `npm run seed`
 
 ## Available EndPoints
 
