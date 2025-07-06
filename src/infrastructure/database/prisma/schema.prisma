@@ -27,7 +27,7 @@ model User {
 
 model Country {
   idCountry      Int         @id @default(autoincrement())
-  name           String
+  name           String      @unique
   brands         Brand[]
 }
 
@@ -41,7 +41,7 @@ model Category {
 
 model Brand {
   idBrand        Int         @id @default(autoincrement())
-  name           String
+  name           String      @unique
   description    String?
   idCountry      Int
   products       Product[]
@@ -61,6 +61,7 @@ model Product {
   images         Image[]
   category       Category    @relation(fields: [idCategory], references: [idCategory])
   brand          Brand       @relation(fields: [idBrand], references: [idBrand])
+  @@unique([name, idBrand])
 }
 
 model Review {
@@ -72,6 +73,7 @@ model Review {
   idProduct      Int
   user           User       @relation(fields: [idUser], references: [idUser])
   product        Product    @relation(fields: [idProduct], references: [idProduct])
+  @@unique([idUser, idProduct])
 }
 
 model Image {
